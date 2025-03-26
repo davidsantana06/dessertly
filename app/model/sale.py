@@ -21,7 +21,9 @@ class Sale(db.Model, MainModel["Sale"]):
 
     customer: Mapped["Customer"] = relationship(back_populates="sales")
     payment_method: Mapped["PaymentMethod"] = relationship(back_populates="sales")
-    product_rels = []
+    product_rels: Mapped[list["SaleProduct"]] = relationship(
+        back_populates="sale", cascade="all, delete"
+    )
 
     @property
     def code(self) -> str:
@@ -68,4 +70,4 @@ class Sale(db.Model, MainModel["Sale"]):
 
 from .customer import Customer
 from .payment_method import PaymentMethod
-# from .sale_product import SaleProduct
+from .sale_product import SaleProduct

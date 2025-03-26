@@ -10,5 +10,6 @@ from .product_service import ProductService
 from .recipe_ingredient_service import RecipeIngredientService
 from .recipe_material_service import RecipeMaterialService
 from .recipe_service import RecipeService
+from .sale_product_service import SaleProductService
 from .sale_service import SaleService
 from .user_service import UserService

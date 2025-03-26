@@ -23,7 +23,9 @@ class Product(db.Model, MainModel["Product"]):
 
     recipe: Mapped["Recipe"] = relationship(back_populates="products")
     employee: Mapped["Employee"] = relationship(back_populates="products")
-    sale_rels = []
+    sale_rels: Mapped[list["SaleProduct"]] = relationship(
+        back_populates="product", cascade="all, delete"
+    )
 
     @property
     def monthly_fees_value(self) -> float:
@@ -67,4 +69,4 @@ class Product(db.Model, MainModel["Product"]):
 from .employee import Employee
 from .monthly_fee import MonthlyFee
 from .recipe import Recipe
-# from .sale_product import SaleProduct
+from .sale_product import SaleProduct

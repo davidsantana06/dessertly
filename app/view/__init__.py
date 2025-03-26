@@ -8,5 +8,6 @@ from .product_view import ProductView
 from .recipe_ingredient_view import RecipeIngredientView
 from .recipe_material_view import RecipeMaterialView
 from .recipe_view import RecipeView
+from .sale_product_view import SaleProductView
 from .sale_view import SaleView
 from .user_view import UserView

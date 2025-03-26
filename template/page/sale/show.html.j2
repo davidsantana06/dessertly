@@ -1,1 +1,18 @@
+{% from macro('dropdown') import render_dropdown %}
+
 {% extends layout('main/show') %}
+
+{% block footer %}
+    {{ render_dropdown(items=[
+        {
+            'icon': 'fas fa-circle-check',
+            'label': 'Concluir venda e deduzir estoque',
+            'href': view('sale:conclude', id=model.id)
+        } if model.is_concludable,
+        {
+            'icon': 'fas fa-box',
+            'label': 'Gerenciar produtos',
+            'href': view('sale_product:index', primary_id=model.id)
+        },
+    ]) }}
+{% endblock %}
