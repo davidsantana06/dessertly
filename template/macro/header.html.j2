@@ -1,0 +1,18 @@
+{% macro render_header(icon, title, subtitle) %}
+    <header class="container is-max-desktop px-5 mt-6 mb-5">
+        <div class="is-flex is-align-items-center">
+            <span class="fa-stack fa-xl has-text-primary mr-2">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="{{ icon }} fa-inverse fa-stack-1x"></i>
+            </span>
+            <div>
+                <h1 class="title is-4 mb-0">
+                    {{ title }}
+                </h1>
+                <h2 class="subtitle is-7">
+                    {{ subtitle }}
+                </h2>
+            </div>
+        </div>
+    </header>
+{% endmacro %}

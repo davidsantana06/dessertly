@@ -1,0 +1,30 @@
+{% macro render_link_button(
+    category,
+    icon,
+    label,
+    href,
+    description = none,
+    size = 'normal',
+    shadow = false,
+    px = 3
+) %}
+	<a
+		class="
+            button
+            is-{{ category }}
+            is-{{ user.theme }}
+            is-{{ size }}
+            has-text-weight-medium
+            {% if shadow %} has-shadow {% endif%}
+            has-tooltip-arrow
+			has-tooltip-bottom
+			has-tooltip-multiline
+            px-{{ px }}
+        "
+		href="{{ href }}"
+        {% if description %} data-tooltip="{{ description }}" {% endif %}
+	>
+		<i class="{{ icon }} fs-fw mr-2"></i>
+		{{ label }}
+	</a>
+{% endmacro %}

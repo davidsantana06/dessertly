@@ -1,0 +1,30 @@
+{% macro _render_th(icon, title) %}
+    <th class="is-size-7 is-narrow is-vcentered has-text-weight-semibold">
+        <i class="{{ icon }} fs-fw mr-1"></i>
+        {{ title }}
+    </th>
+{% endmacro %}
+
+
+{% macro _render_td(model, attr) %}
+    {% set value = model | get(attr) | format %}
+    <td class="is-word-wrap-anywhere">
+        {{ value | string or 'Não informado(a)' }}
+    </td>
+{% endmacro %}
+
+
+{% macro render_single_table(columns, model) %}
+    <div class="box">
+        <table class="table is-hoverable is-fullwidth mb-0">
+            <tbody>
+                {% for column in columns %}
+                    <tr>
+                        {{ _render_th(column.icon, column.title) }}
+                        {{ _render_td(model, column.attr) }}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endmacro %}

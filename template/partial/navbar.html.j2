@@ -1,0 +1,21 @@
+{% macro _render_navbar_item(label, href) %}
+    <a class="navbar-item" href="{{ href }}">
+        {{ label }}
+    </a>
+{% endmacro %}
+
+<nav class="navbar is-fixed-top has-text-weight-medium has-shadow">
+    <div class="navbar-brand">
+        <a class="navbar-burger" data-target=".navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            {{ _render_navbar_item(label='Perfil', href=view('user:show')) }}
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,20 @@
+{% from macro('button/edit_button') import render_edit_button with context %}
+{% from macro('header') import render_header with context %}
+{% from macro('table/single_table') import render_single_table %}
+
+{% extends layout('base') %}
+
+{% block header %}
+    {{ render_header(
+        header.icon,
+        header.title,
+        subtitle='Visualizar',
+    ) }}
+{% endblock %}
+
+{% block main %}
+    <div class='is-flex is-justify-content-flex-end mb-3'>
+        {{ render_edit_button(href=view('user:edit')) }}
+    </div>
+    {{ render_single_table(columns, user) }}
+{% endblock %}

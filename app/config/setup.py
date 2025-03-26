@@ -1,8 +1,12 @@
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, session
 
 from app.model import *
 from app.extension import db
+from app.facade import Flash, URL
+from app.jinja import *
+from app.service import UserService
+from app.view import UserView
 
 from .parameter import Parameter
 from .path import Path
@@ -23,10 +27,27 @@ class Setup:
             db.create_all()
 
     @staticmethod
-    def create_default_user(app: Flask) -> None: ...
+    def create_default_user(app: Flask) -> None:
+        with app.app_context():
+            UserService.get() or UserService.create()
 
     @staticmethod
-    def register_views(app: Flask) -> None: ...
+    def register_views(app: Flask) -> None:
+        UserView.register(app)
 
     @staticmethod
-    def inject_jinja_globals(app: Flask) -> None: ...
+    def inject_jinja_globals(app: Flask) -> None:
+        app.jinja_env.filters.update({"format": format, "get": get})
+        app.context_processor(
+            lambda: {
+                "layout": layout,
+                "macro": macro,
+                "partial": partial,
+                "static": URL.for_static,
+                "view": URL.for_view,
+                "flashes": Flash.pop_all(),
+                "header": session.get("header"),
+                "module": session.get("module"),
+                "user": UserService.get(),
+            }
+        )

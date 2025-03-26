@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="{{ user.theme }}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ static('vendor/bulma.min.css') }}" />
+        <link rel="stylesheet" href="{{ static('vendor/bulma-tooltip.min.css') }}" />
+        <link rel="stylesheet" href="{{ static('vendor/animate.min.css') }}" />
+        <link rel="stylesheet" href="{{ static('css/style.css') }}" />
+        <script defer src="{{ static('vendor/fontawesome.min.js') }}"></script>
+    </head>
+
+    <body class="is-zoom-{{ user.zoom }} has-navbar-fixed-top">
+        {% include partial('navbar') %}
+
+        {% include partial('notification') %}
+
+        {% block header %}{% endblock %}
+
+        <main class="container is-max-desktop px-5 mb-7">
+            {% block main required %}{% endblock %}
+        </main>
+    
+        <footer class="
+            is-flex
+            is-gap-3
+            is-position-fixed
+            is-bottom-0
+            is-hcentered
+            is-z-index-1
+            mb-5
+        ">
+            {% block footer %}{% endblock %}
+        </footer>
+
+        <script src="{{ static('vendor/imask.min.js') }}"></script>
+        <script type="module" src="{{ static('js/script.js') }}"></script>
+    </body>
+</html>

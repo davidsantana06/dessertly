@@ -1,0 +1,11 @@
+{% from macro('button/link_button') import render_link_button with context %}
+
+{% macro render_edit_button(href) %}
+    {{ render_link_button(
+        category='info',
+        icon='fas fa-pen-to-square',
+        label='Editar',
+        href=href,
+        size='small',
+    ) }}
+{% endmacro %}

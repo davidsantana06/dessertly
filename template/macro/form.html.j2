@@ -1,0 +1,59 @@
+{% macro _render_label(field) %}
+    {% set label = field.label %}
+    {% set is_required = 'required' in field.flags %}
+    <div class="field-label is-small is-flex is-align-items-center pt-0">
+        <label class="label has-text-left">
+            <div class="is-flex">
+                {{ label }}
+                {% if is_required %}
+                    <span class="icon is-small has-text-danger">
+                        <i class="fas fa-asterisk fa-2xs"></i>
+                    </span>
+                {% endif %}
+            </div>
+        </label>
+    </div>
+{% endmacro %}
+
+
+{% macro _render_field(field) %}
+    {% set description = field.description %}
+    {% set type = field.type %}
+    {% set class = {
+        'SelectField': 'select', 
+        'TextAreaField': 'textarea', 
+    }[type] | default('input') %}
+    {% set is_select = class == 'select' %}
+    <div class="field-body">
+        <div class="field has-tooltip-arrow has-tooltip-right has-tooltip-multiline">
+            <div class="control has-icons-right">
+                <div {% if is_select %} class="select is-fullwidth" {% endif %}>
+                    {{ field(class=class)}}
+                </div>
+            </div>
+            {% if description %}<p class="help">{{ description }}</p>{% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro render_form(form, action, href) %}
+    <form action="{{ action }}" method="post">
+        <div class="box p-5">
+            {% for field in form %}
+                <div class="field is-horizontal">
+                    {{ _render_label(field) }}
+                    {{ _render_field(field) }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="buttons is-justify-content-space-between">
+            <a class="button" href="{{ href }}">
+                Cancelar
+            </a>
+            <button class="button is-link" type="submit" disabled>
+                Salvar
+            </button>
+        </div>
+    </form>
+{% endmacro %}
