@@ -8,4 +8,5 @@ from .monthly_fee_service import MonthlyFeeService
 from .payment_method_service import PaymentMethodService
 from .recipe_service import RecipeService
 from .recipe_ingredient_service import RecipeIngredientService
+from .recipe_material_service import RecipeMaterialService
 from .user_service import UserService

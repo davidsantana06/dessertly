@@ -22,7 +22,9 @@ class Recipe(db.Model, MainModel["Recipe"]):
     ingredient_rels: Mapped[list["RecipeIngredient"]] = relationship(
         back_populates="recipe", cascade="all, delete"
     )
-    material_rels = []
+    material_rels: Mapped[list["RecipeMaterial"]] = relationship(
+        back_populates="recipe", cascade="all, delete"
+    )
     products = []
 
     @property
@@ -53,4 +55,4 @@ class Recipe(db.Model, MainModel["Recipe"]):
 
 # from .product import Product
 from .recipe_ingredient import RecipeIngredient
-# from .recipe_material import RecipeMaterial
+from .recipe_material import RecipeMaterial

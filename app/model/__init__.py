@@ -8,4 +8,5 @@ from .monthly_fee import MonthlyFee
 from .payment_method import PaymentMethod
 from .recipe import Recipe
 from .recipe_ingredient import RecipeIngredient
+from .recipe_material import RecipeMaterial
 from .user import User

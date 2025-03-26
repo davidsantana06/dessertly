@@ -8,4 +8,5 @@ from .monthly_fee_form import MonthlyFeeForm
 from .payment_method_form import PaymentMethodForm
 from .recipe_form import RecipeForm
 from .recipe_ingredient_form import RecipeIngredientForm
+from .recipe_material_form import RecipeMaterialForm
 from .user_form import UserForm
