@@ -9,7 +9,7 @@
 {% macro _render_td(model, attr) %}
     {% set value = model | get(attr) | format %}
     <td class="is-vcentered">
-        {{ value | string | truncate(50, killwords=true) }}
+        {{ value | truncate(50, killwords=true) }}
     </td>
 {% endmacro %}
 

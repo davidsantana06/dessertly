@@ -17,6 +17,12 @@
         <div class="navbar-start">
             {{ _render_navbar_item(label='Clientes', href=view('customer:index')) }}
             {{ _render_navbar_item(label='Funcionários', href=view('employee:index')) }}
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Estoque</a>
+                <div class="navbar-dropdown">   
+                    {{ _render_navbar_item(label='Ingredientes', href=view('ingredient:index')) }}
+                </div>
+            </div>
         </div>
         <div class="navbar-end">
             {{ _render_navbar_item(label='Perfil', href=view('user:show')) }}
