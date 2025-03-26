@@ -14,6 +14,9 @@
         </a>
     </div>
     <div class="navbar-menu">
+        <div class="navbar-start">
+            {{ _render_navbar_item(label='Clientes', href=view('customer:index')) }}
+        </div>
         <div class="navbar-end">
             {{ _render_navbar_item(label='Perfil', href=view('user:show')) }}
         </div>

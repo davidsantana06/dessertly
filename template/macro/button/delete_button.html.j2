@@ -1,0 +1,12 @@
+{% from macro('button/link_button') import render_link_button with context %}
+
+{% macro render_delete_button(href, description = none) %}
+    {{ render_link_button(
+        category='danger',
+        icon='fas fa-trash',
+        label='Excluir',
+        href=href,
+        description=description,
+        size='small',
+    ) }}
+{% endmacro %}

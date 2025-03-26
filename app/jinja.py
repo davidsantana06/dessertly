@@ -12,11 +12,18 @@ def _format_float(value: float) -> str:
     return f"{value:,.2f}".translate(str.maketrans(",.", ".,"))
 
 
+def _format_int(value: int) -> str:
+    return f"{value:,.0f}"
+
+
 def format(value: datetime | float | int | str) -> str:
-    formatter = {"datetime": _format_datetime, "float": _format_float}
+    formatter = {
+        "datetime": _format_datetime,
+        "float": _format_float,
+        "int": _format_int,
+    }
     type_ = type(value).__name__
-    is_ready = type_ in ["int", "str"]
-    return value if is_ready else formatter[type_](value)
+    return value if type_ == "str" else formatter[type_](value)
 
 
 def get(obj: object, attr: str) -> object:

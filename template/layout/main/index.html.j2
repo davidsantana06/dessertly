@@ -1,0 +1,41 @@
+{% from macro('button/create_button') import render_create_button with context %}
+{% from macro('header') import render_header with context %}
+{% from macro('table/multi_table') import render_multi_table with context %}
+
+{% extends layout('base') %}
+
+{% block header %}
+    {{ render_header(
+        header.icon,
+        header.title,
+        subtitle='Gerenciar',
+    ) }}
+{% endblock %}
+
+{% block main %}
+    {{ render_multi_table(module, columns, models) }}
+{% endblock %}
+
+{% block footer %}
+    {{ render_create_button(href=view(module ~ ':create')) }}
+    <form class="has-shadow" action="{{ view(module ~ ':index') }}" method="GET">
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input px-3"
+                    name="search"
+                    placeholder="Buscar por..."
+                    maxlength="100"
+                    value="{{ search }}"
+                />
+            </div>
+            <div class="control">
+                <button class="button is-link is-{{ user.theme }}">
+                    <span class="icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% from macro('form') import render_form %}
+{% from macro('header') import render_header with context %}
+
+{% extends layout('base') %}
+
+{% block header %}
+    {{ render_header(
+        header.icon,
+        header.title,
+        subtitle='Editar'
+    ) }}
+{% endblock %}
+
+{% block main %}
+    {{ render_form(
+        form,
+        action=view(module ~ ':put', id=model.id),
+        href=view(module ~ ':show', id=model.id),
+    ) }}
+{% endblock %}

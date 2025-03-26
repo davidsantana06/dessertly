@@ -6,7 +6,7 @@ from app.extension import db
 from app.facade import Flash, URL
 from app.jinja import *
 from app.service import UserService
-from app.view import UserView
+from app.view import CustomerView, UserView
 
 from .parameter import Parameter
 from .path import Path
@@ -33,6 +33,7 @@ class Setup:
 
     @staticmethod
     def register_views(app: Flask) -> None:
+        CustomerView.register(app)
         UserView.register(app)
 
     @staticmethod

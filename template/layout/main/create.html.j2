@@ -1,0 +1,20 @@
+{% from macro('form') import render_form with context %}
+{% from macro('header') import render_header with context %}
+
+{% extends layout('base') %}
+
+{% block header %}
+    {{ render_header(
+        header.icon,
+        header.title,
+        subtitle='Adicionar'
+    ) }}
+{% endblock %}
+
+{% block main %}
+    {{ render_form(
+        form,
+        action=view(module ~ ':post'),
+        href=view(module ~ ':index')
+    ) }}
+{% endblock %}

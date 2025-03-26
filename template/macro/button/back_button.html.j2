@@ -1,0 +1,13 @@
+{% from macro('button/link_button') import render_link_button with context %}
+
+{% macro render_back_button(href, size = 'small', shadow = false, px = 3) %}
+    {{ render_link_button(
+        category='default',
+        icon='fas fa-arrow-left',
+        label='Voltar',
+        href=href,
+        size=size,
+        shadow=shadow,
+        px=px
+    ) }}
+{% endmacro %}

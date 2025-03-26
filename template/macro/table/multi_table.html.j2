@@ -1,0 +1,52 @@
+{% macro _render_th(icon, title) %}
+    <th>
+        <i class="{{ icon }} fs-fw mr-1"></i>
+        {{ title }}
+    </th>
+{% endmacro %}
+
+
+{% macro _render_td(model, attr) %}
+    {% set value = model | get(attr) | format %}
+    <td class="is-vcentered">
+        {{ value | string | truncate(50, killwords=true) }}
+    </td>
+{% endmacro %}
+
+
+{% macro render_multi_table(module, columns, models) %}
+    {% if models %}
+        <div class="table-container">
+            <table class="table is-fullwidth is-hoverable is-striped">
+                <thead>
+                    <tr class="is-size-7">
+                        {% for column in columns %}
+                            {{ _render_th(column.icon, column.title) }}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model in models %}
+                        <tr
+                            class="is-clickable"
+                            data-href="{{ view(module ~ ':show', id=model.id) }}"
+                        >
+                            {% for column in columns %}
+                                {{ _render_td(model, column.attr) }}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="is-flex is-flex-direction-column is-align-items-center">
+            <div class="has-text-primary mb-2">
+                <i class="fas fa-mug-hot fa-10x"></i>
+            </div>
+            <p class="is-size-7">
+                Sem resultados, mas nunca sem uma xícara de café...
+            </p>
+        </div>
+    {% endif %}
+{% endmacro %}

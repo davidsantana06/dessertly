@@ -9,7 +9,7 @@
 {% macro _render_td(model, attr) %}
     {% set value = model | get(attr) | format %}
     <td class="is-word-wrap-anywhere">
-        {{ value | string or 'Não informado(a)' }}
+        {{ value or 'Não informado(a)' }}
     </td>
 {% endmacro %}
 
