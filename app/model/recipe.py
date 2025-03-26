@@ -25,7 +25,9 @@ class Recipe(db.Model, MainModel["Recipe"]):
     material_rels: Mapped[list["RecipeMaterial"]] = relationship(
         back_populates="recipe", cascade="all, delete"
     )
-    products = []
+    products: Mapped[list["Product"]] = relationship(
+        back_populates="recipe", cascade="all, delete"
+    )
 
     @property
     def preparation_time_in_hours(self) -> float:
@@ -53,6 +55,6 @@ class Recipe(db.Model, MainModel["Recipe"]):
         return value or 0.0
 
 
-# from .product import Product
+from .product import Product
 from .recipe_ingredient import RecipeIngredient
 from .recipe_material import RecipeMaterial

@@ -36,6 +36,7 @@
                 label='Métodos de pagamento',
                 href=view('payment_method:index'),
             ) }}
+            {{ _render_navbar_item(label='Produtos', href=view('product:index')) }}
         </div>
         <div class="navbar-end">
             {{ _render_navbar_item(label='Perfil', href=view('user:show')) }}

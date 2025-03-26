@@ -9,5 +9,10 @@
             'label': 'Gerenciar ingredientes',
             'href': view('recipe_ingredient:index', primary_id=model.id)
         },
+        {
+            'icon': 'fas fa-boxes-stacked',
+            'label': 'Gerenciar materiais',
+            'href': view('recipe_material:index', primary_id=model.id)
+        },
     ]) }}
 {% endblock %}

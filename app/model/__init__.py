@@ -9,4 +9,5 @@ from .payment_method import PaymentMethod
 from .recipe import Recipe
 from .recipe_ingredient import RecipeIngredient
 from .recipe_material import RecipeMaterial
+from .product import Product
 from .user import User

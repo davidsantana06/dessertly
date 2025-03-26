@@ -16,6 +16,7 @@ from app.view import (
     RecipeView,
     RecipeIngredientView,
     RecipeMaterialView,
+    ProductView,
     UserView,
 )
 
@@ -53,6 +54,7 @@ class Setup:
         RecipeView.register(app)
         RecipeIngredientView.register(app)
         RecipeMaterialView.register(app)
+        ProductView.register(app)
         UserView.register(app)
 
     @staticmethod

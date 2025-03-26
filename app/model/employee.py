@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Float, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
 
@@ -15,7 +15,9 @@ class Employee(db.Model, MainModel["Employee"]):
     hourly_rate = Column(Float, nullable=False)
     notes = Column(String)
 
-    products = []
+    products: Mapped[list["Product"]] = relationship(
+        back_populates="employee", cascade="all, delete"
+    )
 
 
-# from .product import Product
+from .product import Product
