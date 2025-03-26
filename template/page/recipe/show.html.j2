@@ -1,1 +1,13 @@
+{% from macro('dropdown') import render_dropdown %}
+
 {% extends layout('main/show') %}
+
+{% block footer %}
+    {{ render_dropdown(items=[
+        {
+            'icon': 'fas fa-boxes-stacked',
+            'label': 'Gerenciar ingredientes',
+            'href': view('recipe_ingredient:index', primary_id=model.id)
+        },
+    ]) }}
+{% endblock %}

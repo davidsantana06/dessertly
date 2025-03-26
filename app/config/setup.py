@@ -14,6 +14,7 @@ from app.view import (
     MonthlyFeeView,
     PaymentMethodView,
     RecipeView,
+    RecipeIngredientView,
     UserView,
 )
 
@@ -49,6 +50,7 @@ class Setup:
         MonthlyFeeView.register(app)
         PaymentMethodView.register(app)
         RecipeView.register(app)
+        RecipeIngredientView.register(app)
         UserView.register(app)
 
     @staticmethod

@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
 
@@ -22,7 +22,9 @@ class Ingredient(db.Model, MainModel["Ingredient"], StockMixin):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     weight_in_grams = Column(Integer, nullable=False)
 
-    recipe_rels = []
+    recipe_rels: Mapped[list["RecipeIngredient"]] = relationship(
+        back_populates="ingredient", cascade="all, delete"
+    )
 
 
-# from .recipe_ingredient import RecipeIngredient
+from .recipe_ingredient import RecipeIngredient

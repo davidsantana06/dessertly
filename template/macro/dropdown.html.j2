@@ -1,0 +1,28 @@
+{% macro _render_dropdown_item(icon, label, href) %}
+    <a class="dropdown-item has-text-weight-semibold" href="{{ href }}">
+        <i class="{{ icon }} fs-fw mr-2"></i>
+        {{ label }}
+    </a>
+{% endmacro %}
+
+
+{% macro render_dropdown(items) %}
+    <div class="dropdown is-up is-hoverable">
+        <div class="dropdown-trigger">
+            <button class="button has-shadow">
+                <span>Outras ações</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-up" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu">
+            <div class="dropdown-content">
+                {% for item in items if item %}
+                    {{ _render_dropdown_item(item.icon, item.label, item.href) }}
+                    {% if not loop.last %}<hr class="dropdown-divider">{% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

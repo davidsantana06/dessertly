@@ -5,4 +5,5 @@ from .material_view import MaterialView
 from .monthly_fee_view import MonthlyFeeView
 from .payment_method_view import PaymentMethodView
 from .recipe_view import RecipeView
+from .recipe_ingredient_view import RecipeIngredientView
 from .user_view import UserView

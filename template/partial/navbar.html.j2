@@ -17,6 +17,7 @@
         <div class="navbar-start">
             {{ _render_navbar_item(label='Clientes', href=view('customer:index')) }}
             {{ _render_navbar_item(label='Funcionários', href=view('employee:index')) }}
+            {{ _render_navbar_item(label='Mensalidades', href=view('monthly_fee:index')) }}
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Estoque</a>
                 <div class="navbar-dropdown">   
@@ -30,6 +31,11 @@
                     ) }}
                 </div>
             </div>
+            {{ _render_navbar_item(label='Receitas', href=view('recipe:index')) }}
+            {{ _render_navbar_item(
+                label='Métodos de pagamento',
+                href=view('payment_method:index'),
+            ) }}
         </div>
         <div class="navbar-end">
             {{ _render_navbar_item(label='Perfil', href=view('user:show')) }}

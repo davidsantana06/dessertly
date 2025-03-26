@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
 
@@ -19,7 +19,9 @@ class Recipe(db.Model, MainModel["Recipe"]):
     preparation_time_in_minutes = Column(Integer, nullable=False)
     description = Column(String)
 
-    ingredient_rels = []
+    ingredient_rels: Mapped[list["RecipeIngredient"]] = relationship(
+        back_populates="recipe", cascade="all, delete"
+    )
     material_rels = []
     products = []
 
@@ -50,5 +52,5 @@ class Recipe(db.Model, MainModel["Recipe"]):
 
 
 # from .product import Product
-# from .recipe_ingredient import RecipeIngredient
+from .recipe_ingredient import RecipeIngredient
 # from .recipe_material import RecipeMaterial

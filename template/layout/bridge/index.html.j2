@@ -1,0 +1,30 @@
+{% from macro('button/back_button') import render_back_button with context %}
+{% from macro('button/create_button') import render_create_button with context %}
+{% from macro('header') import render_header with context %}
+{% from macro('table/multi_table') import render_multi_table with context %}
+
+{% extends layout('base') %}
+
+{% block header %}
+    {{ render_header(
+        header.icon,
+        header.title,
+        subtitle='Listar',
+    ) }}
+{% endblock %}
+
+{% block main %}
+    {{ render_multi_table(module, columns, models) }}
+{% endblock %}
+
+{% block footer %}
+    {{ render_back_button(
+        href=view(primary_module ~ ':show', id=primary_id),
+        size='normal',
+        shadow=true,
+        px=4,
+    ) }}
+    {{ render_create_button(
+        href=view(module ~ ':create', primary_id=primary_id)
+    ) }}
+{% endblock %}

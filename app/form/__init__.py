@@ -7,4 +7,5 @@ from .material_form import MaterialForm
 from .monthly_fee_form import MonthlyFeeForm
 from .payment_method_form import PaymentMethodForm
 from .recipe_form import RecipeForm
+from .recipe_ingredient_form import RecipeIngredientForm
 from .user_form import UserForm
