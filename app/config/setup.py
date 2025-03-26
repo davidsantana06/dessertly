@@ -9,6 +9,7 @@ from app.service import UserService
 from app.view import (
     CustomerView,
     EmployeeView,
+    HomeView,
     IngredientView,
     MaterialView,
     MonthlyFeeView,
@@ -49,6 +50,7 @@ class Setup:
     def register_views(app: Flask) -> None:
         CustomerView.register(app)
         EmployeeView.register(app)
+        HomeView.register(app)
         IngredientView.register(app)
         MaterialView.register(app)
         MonthlyFeeView.register(app)
