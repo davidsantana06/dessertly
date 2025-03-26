@@ -13,6 +13,7 @@ from app.view import (
     MaterialView,
     MonthlyFeeView,
     PaymentMethodView,
+    RecipeView,
     UserView,
 )
 
@@ -47,6 +48,7 @@ class Setup:
         MaterialView.register(app)
         MonthlyFeeView.register(app)
         PaymentMethodView.register(app)
+        RecipeView.register(app)
         UserView.register(app)
 
     @staticmethod
