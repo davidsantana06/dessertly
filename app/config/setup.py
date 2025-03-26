@@ -13,10 +13,11 @@ from app.view import (
     MaterialView,
     MonthlyFeeView,
     PaymentMethodView,
-    RecipeView,
+    ProductView,
     RecipeIngredientView,
     RecipeMaterialView,
-    ProductView,
+    RecipeView,
+    SaleView,
     UserView,
 )
 
@@ -55,6 +56,7 @@ class Setup:
         RecipeIngredientView.register(app)
         RecipeMaterialView.register(app)
         ProductView.register(app)
+        SaleView.register(app)
         UserView.register(app)
 
     @staticmethod

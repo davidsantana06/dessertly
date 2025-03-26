@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
 
@@ -13,11 +13,13 @@ class PaymentMethod(db.Model, MainModel["PaymentMethod"]):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
 
-    sales = []
+    sales: Mapped[list["Sale"]] = relationship(
+        back_populates="payment_method", cascade="all, delete"
+    )
 
     @property
     def sales_count(self) -> int:
         return len(self.sales)
 
 
-# from .sale import Sale
+from .sale import Sale

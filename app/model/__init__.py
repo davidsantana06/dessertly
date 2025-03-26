@@ -6,8 +6,9 @@ from .ingredient import Ingredient
 from .material import Material
 from .monthly_fee import MonthlyFee
 from .payment_method import PaymentMethod
-from .recipe import Recipe
+from .product import Product
 from .recipe_ingredient import RecipeIngredient
 from .recipe_material import RecipeMaterial
-from .product import Product
+from .recipe import Recipe
+from .sale import Sale
 from .user import User

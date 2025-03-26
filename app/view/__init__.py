@@ -4,8 +4,9 @@ from .ingredient_view import IngredientView
 from .material_view import MaterialView
 from .monthly_fee_view import MonthlyFeeView
 from .payment_method_view import PaymentMethodView
-from .recipe_view import RecipeView
+from .product_view import ProductView
 from .recipe_ingredient_view import RecipeIngredientView
 from .recipe_material_view import RecipeMaterialView
-from .product_view import ProductView
+from .recipe_view import RecipeView
+from .sale_view import SaleView
 from .user_view import UserView

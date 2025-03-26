@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
 
@@ -23,11 +23,13 @@ class Customer(db.Model, MainModel["Customer"]):
     instagram = Column(String)
     notes = Column(String)
 
-    sales = []
+    sales: Mapped[list["Sale"]] = relationship(
+        back_populates="customer", cascade="all, delete"
+    )
 
     @property
     def sales_count(self) -> int:
         return len(self.sales)
 
 
-# from .sale import Sale
+from .sale import Sale
