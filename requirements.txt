@@ -1,0 +1,8 @@
+case_converter==1.2.0
+flask==3.1.0
+flask_classful==0.16.0
+flask_sqlalchemy==3.1.1
+flask_wtf==1.2.2
+python_dotenv==1.0.1
+pywebview==5.4
+sqlalchemy==2.0.35
