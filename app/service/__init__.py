@@ -5,4 +5,5 @@ from .employee_service import EmployeeService
 from .ingredient_service import IngredientService
 from .material_service import MaterialService
 from .monthly_fee_service import MonthlyFeeService
+from .payment_method_service import PaymentMethodService
 from .user_service import UserService

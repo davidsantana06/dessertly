@@ -5,4 +5,5 @@ from .employee import Employee
 from .ingredient import Ingredient
 from .material import Material
 from .monthly_fee import MonthlyFee
+from .payment_method import PaymentMethod
 from .user import User
