@@ -20,7 +20,14 @@
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Estoque</a>
                 <div class="navbar-dropdown">   
-                    {{ _render_navbar_item(label='Ingredientes', href=view('ingredient:index')) }}
+                    {{ _render_navbar_item(
+                        label='Ingredientes',
+                        href=view('ingredient:index'),
+                    ) }}
+                    {{ _render_navbar_item(
+                        label='Materiais',
+                        href=view('material:index'),
+                    ) }}
                 </div>
             </div>
         </div>
