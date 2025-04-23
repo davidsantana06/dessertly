@@ -16,10 +16,6 @@
   --bulma-danger-l: 65%;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 .is-bottom-0 {
   bottom: 0;
 }
