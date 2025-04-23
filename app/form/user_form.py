@@ -8,6 +8,7 @@ class UserForm(FlaskForm):
     first_view = SelectField(
         label="Tela de abertura",
         choices=[
+            ("home:index", "Início (home:index)"),
             ("customer:index", "Clientes (customer:index)"),
             ("employee:index", "Funcionários (employee:index)"),
             ("monthly_fee:index", "Mensalidades (monthly_fee:index)"),

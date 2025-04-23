@@ -1,5 +1,5 @@
 <img
-  src="./static/img/banner.png"
+  src="./static/img/banner-v2.png"
   alt="Dessertly"
   style="width: 100%"
 />

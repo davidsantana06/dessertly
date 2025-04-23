@@ -23,7 +23,7 @@ class User(db.Model, TimestampMixin):
             ]
         ),
     )
-    first_view = Column(String, nullable=False, default="customer:index")
+    first_view = Column(String, nullable=False, default="home:index")
     theme = Column(String, nullable=False, default="light")
     zoom = Column(Integer, nullable=False, default=0)
 

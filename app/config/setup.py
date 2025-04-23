@@ -50,7 +50,7 @@ class Setup:
     def register_views(app: Flask) -> None:
         CustomerView.register(app)
         EmployeeView.register(app)
-        HomeView.register(app)
+        HomeView.register(app, route_base="/")
         IngredientView.register(app)
         MaterialView.register(app)
         MonthlyFeeView.register(app)

@@ -23,7 +23,8 @@ def format(value: datetime | float | int | str) -> str:
         "int": _format_int,
     }
     type_ = type(value).__name__
-    return value if type_ == "str" else formatter[type_](value)
+    is_str = type_ == "str"
+    return value if is_str else formatter[type_](value)
 
 
 def get(obj: object, attr: str) -> object:

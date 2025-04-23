@@ -1,0 +1,97 @@
+{% extends layout('base') %}
+
+{% block header %}
+    <header class="container is-max-desktop px-5 mt-6 mb-5">
+        <figure class="image">
+            <img class="is-rounded" src="{{ static('img/banner-v1.png') }}">
+        </figure>
+    </header>
+{% endblock %}
+
+{% block main %}
+    {% set modules = [
+        (
+            'Clientes',
+            'Mantenha o histórico de seus clientes, com dados atualizados e quantidade de compras.'
+        ),
+        (
+            'Funcionários',
+            'Cadastre sua equipe e controle os salários individualmente.'
+        ),
+        (
+            'Mensalidades',
+            'Administre suas cobranças recorrentes com facilidade.'
+        ),
+        (
+            'Estoque',
+            'Monitore o estoque de ingredientes e materiais essenciais para produção e operação.'
+        ),
+        (
+            'Receitas',
+            'Organize receitas culinárias detalhadas, com lista de ingredientes e materiais necessários e modo de preparo.'
+        ),
+        (
+            'Métodos de pagamento',
+            'Personalize como seus clientes podem pagar: PIX, dinheiro, cartão e mais.'
+        ),
+        (
+            'Produtos',
+            'Cadastre os itens prontos para venda, como bolos, doces e combos personalizados.'
+        ),
+        (
+            'Vendas',
+            'Registre cada venda de forma prática e tenha controle sobre seu lucro.'
+        ),
+    ] %}
+    <div class="content">
+        <p>
+            Boas-vindas ao <b>Dessertly</b>! Sua aplicação desktop pensada para
+            a rotina de confeitarias, padarias de bairro e pequenos negócios
+            artesanais. Ideal para você que prepara, vende e administra tudo no
+            dia a dia, com funcionalidades que facilitam a organização, o controle
+            e o acompanhamento do seu negócio. E tudo offline, sem depender de
+            serviços externos.
+        </p>
+        <p>
+            O que você vai encontrar por aqui:
+        </p>
+        <ul>
+            {% for title, description in modules %}
+                <li>
+                    <b>{{ title }}</b> — {{ description }}
+                </li>
+            {% endfor %}
+        </ul>
+        <p>
+            Para começar, use a barra de navegação no topo da tela. Ela garante
+            acesso rápido aos principais módulos, permitindo que você explore
+            facilmente cada funcionalidade do sistema. Deixe sua intuição guiar
+            seus passos.
+        </p>
+        <hr />
+        <blockquote>
+            <p class="is-size-5 has-text-centered mb-1">❝</p>
+            <p class="has-text-weight-semibold has-text-centered mb-3">
+                Cada um cuide, não somente dos seus interesses, mas também dos
+                interesses dos outros.
+            </p>
+            <p class="is-size-5 has-text-centered">❞</p>
+            <p class="is-italic is-size-7 has-text-right">
+                Filipenses 2:4
+            </p>
+        </blockquote>
+        <hr />
+        <p class="is-size-7 has-text-centered">
+            Desenvolvido por 
+            <br />
+            <a
+                class="has-text-weight-bold"
+                href="https://github.com/davidsantana06"
+                target="_blank"
+            >
+                <i class="fab fa-github"></i>
+                davidsantana06
+            </a>
+        </p>
+    </div>
+{% endblock %}

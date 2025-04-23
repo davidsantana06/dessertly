@@ -7,12 +7,11 @@ from .mixin import ResponseMixin
 
 
 class HomeView(FlaskView, ResponseMixin):
-    route_base = "/"
-
     def before_request(self, _):
-        if "is_first_acess" not in session:
-            session["is_first_acess"] = False
+        if "is_first_access" not in session:
+            session["is_first_access"] = False
             user = UserService.get()
             return self._redirect_to(user.first_view)
 
-    def index(self): ...
+    def index(self):
+        return self._render_page("home/index")
