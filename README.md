@@ -27,6 +27,16 @@ pip install -r requirements.txt
 python -m app
 ```
 
+### 🤝 Doação
+
+Gostou do projeto e gostaria de apoiar financeiramente? Você pode contribuir via **PayPal** ou através do **PIX** — é só clicar em uma das opções abaixo:
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-1040C1?labelColor=121661&style=for-the-badge&logo=paypal&link=https://www.paypal.com/donate/?hosted_button_id=2P9HPGUP7Z43S)](https://www.paypal.com/donate/?hosted_button_id=2P9HPGUP7Z43S)
+&nbsp;
+[![PIX](https://img.shields.io/badge/PIX-Doar-FBB88A?labelColor=F26722&style=for-the-badge&logo=pix&logoColor=ffffff&link=https://tipa.ai/davidsantana06)](https://tipa.ai/davidsantana06)
+
+Este e outros projetos disponíveis no meu perfil foram desenvolvidos de forma independente. Qualquer apoio para manter este propósito é mais do que bem-vindo! 💪
+
 ### ⚖️ Licença
 
 Este projeto utiliza a **Licença MIT**, que permite que você use e modifique o código como desejar. O único requisito é dar o devido crédito, reconhecendo o esforço e o tempo dedicados à sua construção.
