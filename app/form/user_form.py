@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length
 class UserForm(FlaskForm):
     name = StringField(label="Nome", validators=[DataRequired(), Length(1, 25)])
     first_view = SelectField(
-        label="Tela inicial",
+        label="Tela de abertura",
         choices=[
             ("customer:index", "Clientes (customer:index)"),
             ("employee:index", "Funcionários (employee:index)"),
@@ -15,7 +15,7 @@ class UserForm(FlaskForm):
             ("material:index", "Materiais (material:index)"),
             ("recipe:index", "Receitas (recipe:index)"),
             ("product:index", "Produtos (product:index)"),
-            ("monthly_fee:index", "Mensalidades (monthly_fee:index)"),
+            ("payment_method:index", "Métodos de Pagamento (payment_method:index)"),
             ("sale:index", "Vendas (sale:index)"),
         ],
         validators=[DataRequired()],

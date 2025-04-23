@@ -22,7 +22,7 @@ class UserView(FlaskView, ColumnsMixin, HeaderMixin, ResponseMixin):
         },
         {
             "icon": "fas fa-desktop",
-            "title": "Tela inicial",
+            "title": "Tela de abertura",
             "attr": "first_view",
         },
         {

@@ -32,11 +32,11 @@
                 </div>
             </div>
             {{ _render_navbar_item(label='Receitas', href=view('recipe:index')) }}
+            {{ _render_navbar_item(label='Produtos', href=view('product:index')) }}
             {{ _render_navbar_item(
-                label='Métodos de pagamento',
+                label='Métodos de Pagamento',
                 href=view('payment_method:index'),
             ) }}
-            {{ _render_navbar_item(label='Produtos', href=view('product:index')) }}
             {{ _render_navbar_item(label='Vendas', href=view('sale:index')) }}
         </div>
         <div class="navbar-end">

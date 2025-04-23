@@ -9,7 +9,7 @@ class PaymentMethodView(MainView[PaymentMethodService, PaymentMethodForm]):
 
     _HEADER = {
         "icon": "fas fa-credit-card",
-        "title": "Métodos de pagamento",
+        "title": "Métodos de Pagamento",
     }
 
     _INDEX_COLUMNS = [
