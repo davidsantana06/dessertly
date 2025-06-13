@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
@@ -40,7 +40,7 @@ class Recipe(db.Model, MainModel["Recipe"]):
             (
                 ingredient_rel.weight_in_grams
                 / ingredient_rel.ingredient.weight_in_grams
-                * ingredient_rel.ingredient.value
+                * ingredient_rel.ingredient.corrected_value
             )
             for ingredient_rel in self.ingredient_rels
         )
@@ -55,6 +55,7 @@ class Recipe(db.Model, MainModel["Recipe"]):
         return value or 0.0
 
 
+from .category import Category
 from .product import Product
 from .recipe_ingredient import RecipeIngredient
 from .recipe_material import RecipeMaterial

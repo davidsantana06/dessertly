@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer
+from sqlalchemy import Column, Float, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extension import db
@@ -21,10 +21,15 @@ class Ingredient(db.Model, MainModel["Ingredient"], StockMixin):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     weight_in_grams = Column(Integer, nullable=False)
+    correction_factor = Column(Float, nullable=False)
 
     recipe_rels: Mapped[list["RecipeIngredient"]] = relationship(
         back_populates="ingredient", cascade="all, delete"
     )
+
+    @property
+    def corrected_value(self) -> Float:
+        return self.value * self.correction_factor
 
 
 from .recipe_ingredient import RecipeIngredient

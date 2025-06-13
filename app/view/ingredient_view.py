@@ -34,22 +34,37 @@ class IngredientView(MainView[IngredientService, IngredientForm]):
             "attr": "value",
         },
         {
-            "icon": "fas fa-circle-chevron-down",
-            "title": "Quantidade mínima",
-            "attr": "minimum_quantity",
-        },
-        {
             "icon": "fas fa-circle-chevron-up",
             "title": "Quantidade atual",
             "attr": "current_quantity",
         },
     ]
-    _SHOW_COLUMNS = _INDEX_COLUMNS + [
+    _SHOW_COLUMNS = [
+        _INDEX_COLUMNS[0],
+        _INDEX_COLUMNS[1],
+        _INDEX_COLUMNS[2],
+        _INDEX_COLUMNS[3],
+        {
+            "icon": "fas fa-wrench",
+            "title": "Fator de correção",
+            "attr": "correction_factor",
+        },
+        {
+            "icon": "fas fa-money-bill-wave",
+            "title": "Valor unitário corrigido (R$)",
+            "attr": "corrected_value",
+        },
         {
             "icon": "fas fa-weight-hanging",
             "title": "Peso unitário (g)",
             "attr": "weight_in_grams",
         },
+        {
+            "icon": "fas fa-circle-chevron-down",
+            "title": "Quantidade mínima",
+            "attr": "minimum_quantity",
+        },
+        _INDEX_COLUMNS[4],
     ]
 
     _MESSAGE = {
