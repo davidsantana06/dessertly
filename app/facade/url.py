@@ -2,7 +2,7 @@ from caseconverter import pascalcase
 from flask import url_for
 
 
-class URL:
+class Url:
     @staticmethod
     def for_static(filename: str) -> str:
         return url_for("static", filename=filename)

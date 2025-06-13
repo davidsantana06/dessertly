@@ -13,7 +13,7 @@ def _format_float(value: float) -> str:
 
 
 def _format_int(value: int) -> str:
-    return f"{value:,.0f}"
+    return f"{value}"
 
 
 def format(value: datetime | float | int | str) -> str:
@@ -32,13 +32,13 @@ def get(obj: object, attr: str) -> object:
     return reduce(getattr, parts, obj)
 
 
-def layout(template: str) -> str:
+def resolve_layout(template: str) -> str:
     return Template.resolve(f"layout/{template}")
 
 
-def macro(template: str) -> str:
+def resolve_macro(template: str) -> str:
     return Template.resolve(f"macro/{template}")
 
 
-def partial(template: str) -> str:
+def resolve_partial(template: str) -> str:
     return Template.resolve(f"partial/{template}")

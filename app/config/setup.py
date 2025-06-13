@@ -3,7 +3,7 @@ from flask import Flask, session
 
 from app.model import *
 from app.extension import db
-from app.facade import Flash, URL
+from app.facade import Flash, Url
 from app.jinja import *
 from app.service import UserService
 from app.view import (
@@ -68,11 +68,11 @@ class Setup:
         app.jinja_env.filters.update({"format": format, "get": get})
         app.context_processor(
             lambda: {
-                "layout": layout,
-                "macro": macro,
-                "partial": partial,
-                "static": URL.for_static,
-                "view": URL.for_view,
+                "layout": resolve_layout,
+                "macro": resolve_macro,
+                "partial": resolve_partial,
+                "static": Url.for_static,
+                "view": Url.for_view,
                 "flashes": Flash.pop_all(),
                 "header": session.get("header"),
                 "module": session.get("module"),

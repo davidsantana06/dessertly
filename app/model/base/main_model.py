@@ -1,4 +1,4 @@
-from sqlalchemy import ColumnElement, asc, desc, or_
+from sqlalchemy import ColumnElement, UnaryExpression, asc, desc, or_
 from typing import Literal, NotRequired, TypedDict, TypeVar
 
 from .model import Model
@@ -20,19 +20,22 @@ class MainModel(Model[MM]):
 
     @classmethod
     def __mount_filters(cls, search: str) -> list[ColumnElement[bool]]:
-        return [
-            getattr(cls, column).icontains(search)  # ~ cls.{column}.icontains({search})
-            for column in cls._SEARCH_BY
-        ]
+        filters = []
+        for column in cls._SEARCH_BY:
+            attr = getattr(cls, column)
+            filters.append(attr.icontains(search))
+        return filters
 
     @classmethod
-    def __mount_orderings(cls) -> list[ColumnElement]:
-        return [
-            globals()[ordering.get("direction", "asc")](  # ~ asc(...) or desc(...)
-                getattr(cls, ordering["column"])  # ~ cls.{column}
-            )
-            for ordering in cls._ORDER_BY
-        ]
+    def __mount_orderings(cls) -> list[UnaryExpression]:
+        orderings = []
+        for ordering in cls._ORDER_BY:
+            column = ordering["column"]
+            direction = ordering.get("direction", "asc")
+            attr = getattr(cls, column)
+            direction_func = globals()[direction]
+            orderings.append(direction_func(attr))
+        return orderings
 
     @classmethod
     def find_all(cls, search: str = "") -> list[MM]:

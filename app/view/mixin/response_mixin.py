@@ -1,5 +1,5 @@
 from flask import redirect
-from app.facade import Template, URL
+from app.facade import Template, Url
 
 
 class ResponseMixin:
@@ -7,4 +7,4 @@ class ResponseMixin:
         return Template.render(f"page/{template}", **context)
 
     def _redirect_to(self, endpoint: str, **values):
-        return redirect(URL.for_view(endpoint, **values))
+        return redirect(Url.for_view(endpoint, **values))
