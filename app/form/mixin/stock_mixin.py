@@ -12,7 +12,7 @@ class StockMixin:
             "placeholder": "9.99",
             "data-regex": "^[0-9]{1,4}([.][0-9]{0,2})?$",  # ~ 4 numbers and 2 decimals
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9_999.99)],
     )
     minimum_quantity = FloatField(
         label="Quantidade mínima",
@@ -21,7 +21,7 @@ class StockMixin:
             "placeholder": "1",
             "data-mask": "0" * 4,  # ~ 4 numbers
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9999)],
         default=0,
     )
     current_quantity = FloatField(
@@ -31,6 +31,6 @@ class StockMixin:
             "placeholder": "10",
             "data-regex": "^[0-9]{1,4}([.][0-9]{0,1})?$",  # ~ 4 numbers and 1 decimal
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9_999.9)],
         default=0,
     )

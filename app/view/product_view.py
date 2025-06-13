@@ -66,16 +66,6 @@ class ProductView(MainView[ProductService, ProductForm]):
             "title": "Custo total (R$)",
             "attr": "cost_value",
         },
-        {
-            "icon": "fas fa-circle-down",
-            "title": "Margem de perda (%)",
-            "attr": "loss_margin",
-        },
-        {
-            "icon": "fas fa-dollar-sign",
-            "title": "Valor de perda (R$)",
-            "attr": "loss_value",
-        },
         _INDEX_COLUMNS[2],
         {
             "icon": "fas fa-dollar-sign",

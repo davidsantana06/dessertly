@@ -20,16 +20,6 @@ class ProductForm(FlaskForm):
         validators=[DataRequired()],
         default="",
     )
-    loss_margin = FloatField(
-        label="Margem de perda (%)",
-        description="Margem de perda, em porcentagem",
-        render_kw={
-            "placeholder": "5",
-            "data-mask": "0" * 2,  # ~ 2 numbers
-        },
-        validators=[DataRequired(), NumberRange(0, 100)],
-        default=0,
-    )
     contribuition_margin = FloatField(
         label="Margem de contribuição (%)",
         description="Margem de contribuição, em porcentagem",
@@ -37,6 +27,6 @@ class ProductForm(FlaskForm):
             "placeholder": "100",
             "data-mask": "0" * 4,  # ~ 4 numbers
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9_999)],
         default=0,
     )

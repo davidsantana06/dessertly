@@ -16,5 +16,5 @@ class RecipeMaterialForm(FlaskForm):
             "placeholder": "1",
             "data-regex": "^[0-9]{1,4}([.][0-9]{0,1})?$",  # ~ 4 numbers and 1 decimal
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9_999.9)],
     )

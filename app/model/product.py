@@ -8,17 +8,12 @@ from .base import MainModel
 
 class Product(db.Model, MainModel["Product"]):
     _SEARCH_BY = ["name"]
-    _ORDER_BY = [
-        {"column": "name"},
-        {"column": "loss_margin"}, 
-        {"column": "contribuition_margin"},
-    ]
+    _ORDER_BY = [{"column": "name"}, {"column": "contribuition_margin"}]
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"), nullable=False)
     employee_id: Mapped[int] = mapped_column(ForeignKey("employee.id"), nullable=False)
     name = Column(String, nullable=False)
-    loss_margin = Column(Integer, nullable=False)
     contribuition_margin = Column(Integer, nullable=False)
 
     recipe: Mapped["Recipe"] = relationship(back_populates="products")
@@ -50,16 +45,12 @@ class Product(db.Model, MainModel["Product"]):
         )
 
     @property
-    def loss_value(self) -> float:
-        return self.cost_value * (self.loss_margin / 100)
-
-    @property
     def contribuition_value(self) -> float:
         return self.cost_value * (self.contribuition_margin / 100)
 
     @property
     def sell_value(self) -> float:
-        return self.cost_value + self.contribuition_value - self.loss_value
+        return self.cost_value + self.contribuition_value
 
     @property
     def balance_value(self) -> float:

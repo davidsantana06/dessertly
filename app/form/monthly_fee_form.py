@@ -14,7 +14,7 @@ class MonthlyFeeForm(FlaskForm):
             "placeholder": "99.99",
             "data-regex": "^[0-9]{1,4}([.][0-9]{0,2})?$",  # ~ 4 numbers and 2 decimals
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9_999.99)],
     )
     description = TextAreaField(
         label="Descrição",

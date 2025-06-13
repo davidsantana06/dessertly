@@ -12,10 +12,10 @@ class RecipeIngredientForm(FlaskForm):
     )
     weight_in_grams = FloatField(
         label="Peso (g)",
-        description="Peso em gramas",
+        description="Peso, em gramas",
         render_kw={
             "placeholder": "50",
-            "data-mask": "0" * 4,  # ~ 4 numbers
+            "data-mask": "0" * 5,  # ~ 5 numbers
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 99_999)],
     )

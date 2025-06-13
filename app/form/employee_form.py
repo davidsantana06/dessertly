@@ -12,6 +12,6 @@ class EmployeeForm(FlaskForm):
             "placeholder": "9.99",
             "data-regex": "^[0-9]{1,4}([.][0-9]{0,2})?$",  # ~ 4 numbers and 2 decimals
         },
-        validators=[DataRequired(), NumberRange(0, 10_000)],
+        validators=[DataRequired(), NumberRange(0, 9_999.99)],
     )
     notes = TextAreaField(label="Notas", validators=[Length(0, 1_000)])
