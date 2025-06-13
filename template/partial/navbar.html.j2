@@ -4,6 +4,17 @@
     </a>
 {% endmacro %}
 
+{% macro _render_navbar_dropdown(label, items) %}
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">{{ label }}</a>
+        <div class="navbar-dropdown">
+            {% for item in items %}
+                {{ _render_navbar_item(item.label, item.href) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}
+
 <nav class="navbar is-fixed-top has-text-weight-medium has-shadow">
     <div class="navbar-brand">
         <a class="navbar-burger" data-target=".navbar-menu">
@@ -18,20 +29,32 @@
             {{ _render_navbar_item(label='Clientes', href=view('customer:index')) }}
             {{ _render_navbar_item(label='Funcionários', href=view('employee:index')) }}
             {{ _render_navbar_item(label='Mensalidades', href=view('monthly_fee:index')) }}
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Estoque</a>
-                <div class="navbar-dropdown">   
-                    {{ _render_navbar_item(
-                        label='Ingredientes',
-                        href=view('ingredient:index'),
-                    ) }}
-                    {{ _render_navbar_item(
-                        label='Materiais',
-                        href=view('material:index'),
-                    ) }}
-                </div>
-            </div>
-            {{ _render_navbar_item(label='Receitas', href=view('recipe:index')) }}
+            {{ _render_navbar_dropdown(
+                label='Estoque', 
+                items=[
+                    { 
+                        'label': 'Ingredientes',
+                        'href': view('ingredient:index') 
+                    },
+                    { 
+                        'label': 'Materiais',
+                        'href': view('Material:index') 
+                    },
+                ]
+            ) }}
+            {{ _render_navbar_dropdown(
+                label='Ficha Técnica', 
+                items=[
+                    { 
+                        'label': 'Categorias', 
+                        'href': view('category:index')
+                     },
+                    { 
+                        'label': 'Receitas', 
+                        'href': view('recipe:index')
+                    },
+                ]
+            ) }}
             {{ _render_navbar_item(label='Produtos', href=view('product:index')) }}
             {{ _render_navbar_item(
                 label='Métodos de Pagamento',

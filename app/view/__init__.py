@@ -1,3 +1,4 @@
+from .category_view import CategoryView
 from .customer_view import CustomerView
 from .employee_view import EmployeeView
 from .home_view import HomeView

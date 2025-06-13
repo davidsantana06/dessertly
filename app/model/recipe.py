@@ -15,10 +15,12 @@ class Recipe(db.Model, MainModel["Recipe"]):
     ]
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    category_id: Mapped[int] = mapped_column(ForeignKey("category.id"), nullable=False)
     name = Column(String, nullable=False)
     preparation_time_in_minutes = Column(Integer, nullable=False)
     description = Column(String)
 
+    category: Mapped["Category"] = relationship(back_populates="recipes")
     ingredient_rels: Mapped[list["RecipeIngredient"]] = relationship(
         back_populates="recipe", cascade="all, delete"
     )

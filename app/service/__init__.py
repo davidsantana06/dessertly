@@ -1,5 +1,6 @@
 from .base import BridgeService, BS, MainService, MS, Service, S
 
+from .category_service import CategoryService
 from .customer_service import CustomerService
 from .employee_service import EmployeeService
 from .ingredient_service import IngredientService

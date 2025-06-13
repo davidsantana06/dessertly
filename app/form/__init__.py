@@ -1,5 +1,6 @@
 from .base import F
 
+from .category_form import CategoryForm
 from .customer_form import CustomerForm
 from .employee_form import EmployeeForm
 from .ingredient_form import IngredientForm

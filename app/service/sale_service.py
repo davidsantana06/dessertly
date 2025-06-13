@@ -1,6 +1,6 @@
 from werkzeug.exceptions import UnprocessableEntity
 
-from app.model import RecipeIngredient, RecipeMaterial, Sale
+from app.model import Recipe, Sale
 from app.form import SaleForm
 
 from .base import MainService
@@ -32,21 +32,21 @@ class SaleService(MainService[Sale, SaleForm]):
         return sale
 
     @staticmethod
-    def _process_ingredients(
-        recipe_ingredients: list[RecipeIngredient],
+    def __process_ingredients(
+        recipe: Recipe,
         saled_quantity: int,
     ) -> None:
-        for recipe_ingredient in recipe_ingredients:
+        for recipe_ingredient in recipe.ingredient_rels:
             ingredient = recipe_ingredient.ingredient
             weight_in_grams = recipe_ingredient.weight_in_grams * saled_quantity
             IngredientService.decrease_quantity(ingredient, weight_in_grams)
 
     @staticmethod
-    def _process_materials(
-        recipe_materials: list[RecipeMaterial],
+    def __process_materials(
+        recipe: Recipe,
         saled_quantity: int,
     ) -> None:
-        for recipe_material in recipe_materials:
+        for recipe_material in recipe.material_rels:
             material = recipe_material.material
             quantity = recipe_material.quantity * saled_quantity
             MaterialService.decrease_quantity(material, quantity)
@@ -54,15 +54,14 @@ class SaleService(MainService[Sale, SaleForm]):
     @classmethod
     def conclude(cls, id: int) -> Sale:
         sale = cls.get_one(id)
+        sale.status = "Concluída"
 
         for product_rel in sale.product_rels:
             saled_quantity = product_rel.quantity
             product = product_rel.product
             recipe = product.recipe
-            cls._process_ingredients(recipe.ingredient_rels, saled_quantity)
-            cls._process_materials(recipe.material_rels, saled_quantity)
-
-        sale.status = "Concluída"
+            cls.__process_ingredients(recipe.ingredient_rels, saled_quantity)
+            cls.__process_materials(recipe.material_rels, saled_quantity)
 
         Sale.save(sale)
         return sale

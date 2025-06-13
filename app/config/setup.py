@@ -7,6 +7,7 @@ from app.facade import Flash, Url
 from app.jinja import *
 from app.service import UserService
 from app.view import (
+    CategoryView,
     CustomerView,
     EmployeeView,
     HomeView,
@@ -48,6 +49,7 @@ class Setup:
 
     @staticmethod
     def register_views(app: Flask) -> None:
+        CategoryView.register(app)
         CustomerView.register(app)
         EmployeeView.register(app)
         HomeView.register(app, route_base="/")

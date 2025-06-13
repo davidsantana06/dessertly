@@ -1,5 +1,6 @@
 from .base import BridgeModel, BM, MainModel, MM, Model, M
 
+from .category import Category
 from .customer import Customer
 from .employee import Employee
 from .ingredient import Ingredient
