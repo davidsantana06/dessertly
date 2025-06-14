@@ -4,7 +4,7 @@ from . import app
 
 
 def run_in_windows():
-    webview.create_window("Account Keeper", app, min_size=(1024, 768))
+    webview.create_window("Dessertly", app, min_size=(1280, 720))
     webview.start()
 
 
