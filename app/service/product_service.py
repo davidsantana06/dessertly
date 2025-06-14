@@ -13,6 +13,7 @@ class ProductService(MainService[Product, ProductForm], SelectChoicesMixin):
 
     @staticmethod
     def fill(form: ProductForm, product: Product | None = None) -> None:
-        if product: form.process(obj=product)
+        if product:
+            form.process(obj=product)
         form.employee_id.choices += EmployeeService.get_select_choices()
         form.recipe_id.choices += RecipeService.get_select_choices()

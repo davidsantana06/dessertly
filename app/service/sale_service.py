@@ -16,7 +16,8 @@ class SaleService(MainService[Sale, SaleForm]):
 
     @staticmethod
     def fill(form: SaleForm, sale: Sale | None = None) -> None:
-        if sale: form.process(obj=sale)
+        if sale:
+            form.process(obj=sale)
         form.customer_id.choices += CustomerService.get_select_choices()
         form.payment_method_id.choices += PaymentMethodService.get_select_choices()
 
@@ -38,8 +39,12 @@ class SaleService(MainService[Sale, SaleForm]):
     ) -> None:
         for recipe_ingredient in recipe.ingredient_rels:
             ingredient = recipe_ingredient.ingredient
-            weight_in_grams = recipe_ingredient.weight_in_grams * saled_quantity
-            IngredientService.decrease_quantity(ingredient, weight_in_grams)
+            quantity_in_grams_or_milliliters = (
+                recipe_ingredient.quantity_in_grams_or_milliliters * saled_quantity
+            )
+            IngredientService.decrease_quantity(
+                ingredient, quantity_in_grams_or_milliliters
+            )
 
     @staticmethod
     def __process_materials(
@@ -54,14 +59,14 @@ class SaleService(MainService[Sale, SaleForm]):
     @classmethod
     def conclude(cls, id: int) -> Sale:
         sale = cls.get_one(id)
-        sale.status = "Concluída"
 
         for product_rel in sale.product_rels:
             saled_quantity = product_rel.quantity
             product = product_rel.product
             recipe = product.recipe
-            cls.__process_ingredients(recipe.ingredient_rels, saled_quantity)
-            cls.__process_materials(recipe.material_rels, saled_quantity)
+            cls.__process_ingredients(recipe, saled_quantity)
+            cls.__process_materials(recipe, saled_quantity)
 
+        sale.status = "Concluída"
         Sale.save(sale)
         return sale

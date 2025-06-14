@@ -14,13 +14,13 @@ class Ingredient(db.Model, MainModel["Ingredient"], StockMixin):
         {"column": "brand"},
         {"column": "supplier"},
         {"column": "value"},
-        {"column": "weight_in_grams"},
+        {"column": "quantity_in_grams_or_milliliters"},
         {"column": "current_quantity"},
         {"column": "minimum_quantity"},
     ]
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    weight_in_grams = Column(Integer, nullable=False)
+    quantity_in_grams_or_milliliters = Column(Integer, nullable=False)
     correction_factor = Column(Float, nullable=False)
 
     recipe_rels: Mapped[list["RecipeIngredient"]] = relationship(
@@ -30,6 +30,10 @@ class Ingredient(db.Model, MainModel["Ingredient"], StockMixin):
     @property
     def corrected_value(self) -> Float:
         return self.value * self.correction_factor
+
+    @property
+    def quantity_in_kilograms_or_liters(self) -> Float:
+        return self.quantity_in_grams_or_milliliters / 1000
 
 
 from .recipe_ingredient import RecipeIngredient

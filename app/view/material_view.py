@@ -34,13 +34,8 @@ class MaterialView(MainView[MaterialService, MaterialForm]):
             "attr": "value",
         },
         {
-            "icon": "fas fa-circle-chevron-down",
-            "title": "Quantidade mínima",
-            "attr": "minimum_quantity",
-        },
-        {
             "icon": "fas fa-circle-chevron-up",
-            "title": "Quantidade atual",
+            "title": "Quantidade atual em estoque",
             "attr": "current_quantity",
         },
     ]

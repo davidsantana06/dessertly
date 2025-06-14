@@ -12,6 +12,8 @@ class Recipe(db.Model, MainModel["Recipe"]):
         {"column": "name"},
         {"column": "preparation_time_in_minutes"},
         {"column": "description"},
+        {"column": "yield_in_grams_or_milliliters"},
+        {"column": "yield_in_units"},
     ]
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -19,6 +21,8 @@ class Recipe(db.Model, MainModel["Recipe"]):
     name = Column(String, nullable=False)
     preparation_time_in_minutes = Column(Integer, nullable=False)
     description = Column(String)
+    yield_in_grams_or_milliliters = Column(Integer, nullable=False)
+    yield_in_units = Column(Integer, nullable=False)
 
     category: Mapped["Category"] = relationship(back_populates="recipes")
     ingredient_rels: Mapped[list["RecipeIngredient"]] = relationship(
@@ -37,11 +41,22 @@ class Recipe(db.Model, MainModel["Recipe"]):
         return self.preparation_time_in_minutes / minutes_per_hour
 
     @property
+    def yield_in_kilograms_or_liters(self) -> float:
+        return self.yield_in_grams_or_milliliters / 1000
+
+    @property
+    def quantity_per_unit_in_grams_or_milliliters(self) -> int:
+        is_divisible = self.yield_in_units != 0
+        if not is_divisible:
+            return 0
+        return self.yield_in_grams_or_milliliters // self.yield_in_units
+
+    @property
     def ingredients_value(self) -> float:
         value = sum(
             (
-                ingredient_rel.weight_in_grams
-                / ingredient_rel.ingredient.weight_in_grams
+                ingredient_rel.quantity_in_grams_or_milliliters
+                / ingredient_rel.ingredient.quantity_in_grams_or_milliliters
                 * ingredient_rel.ingredient.corrected_value
             )
             for ingredient_rel in self.ingredient_rels

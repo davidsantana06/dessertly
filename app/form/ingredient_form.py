@@ -6,9 +6,9 @@ from .mixin import StockMixin
 
 
 class IngredientForm(FlaskForm, StockMixin):
-    weight_in_grams = FloatField(
-        label="Peso unitário (g)",
-        description="Peso por unidade, em gramas",
+    quantity_in_grams_or_milliliters = FloatField(
+        label="Quantidade por unidade (g/ml)",
+        description="Quantidade por unidade, em gramas ou mililitros",
         render_kw={
             "placeholder": "50",
             "data-mask": "0" * 5,  # ~ 5 numbers

@@ -33,7 +33,8 @@ class SaleProductService(BridgeService[SaleProduct, SaleProductForm]):
 
     @staticmethod
     def fill(form: SaleProductForm, sale_product: SaleProduct | None = None) -> None:
-        if sale_product: form.process(obj=sale_product)
+        if sale_product:
+            form.process(obj=sale_product)
         form.secondary_id.choices += ProductService.get_select_choices()
 
     @classmethod

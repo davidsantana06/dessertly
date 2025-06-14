@@ -9,9 +9,14 @@ class IngredientService(MainService[Ingredient, IngredientForm], SelectChoicesMi
     _Model = Ingredient
 
     @classmethod
-    def decrease_quantity(cls, ingredient: Ingredient, weight_in_grams: int) -> None:
+    def decrease_quantity(
+        cls, ingredient: Ingredient, quantity_in_grams_or_milliliters: int
+    ) -> None:
         current_quantity = ingredient.current_quantity
-        quantity = weight_in_grams / ingredient.weight_in_grams
+        quantity = (
+            quantity_in_grams_or_milliliters
+            / ingredient.quantity_in_grams_or_milliliters
+        )
         decreased_quantity = round(current_quantity - quantity, 2)
         ingredient.current_quantity = max(0, decreased_quantity)
         Ingredient.save(ingredient)

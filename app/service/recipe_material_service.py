@@ -14,5 +14,6 @@ class RecipeMaterialService(BridgeService[RecipeMaterial, RecipeMaterialForm]):
         form: RecipeMaterialForm,
         recipe_material: RecipeMaterial | None = None,
     ) -> None:
-        if recipe_material: form.process(obj=recipe_material)
+        if recipe_material:
+            form.process(obj=recipe_material)
         form.secondary_id.choices += MaterialService.get_select_choices()

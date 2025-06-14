@@ -35,7 +35,7 @@ class IngredientView(MainView[IngredientService, IngredientForm]):
         },
         {
             "icon": "fas fa-circle-chevron-up",
-            "title": "Quantidade atual",
+            "title": "Quantidade atual em estoque",
             "attr": "current_quantity",
         },
     ]
@@ -55,13 +55,18 @@ class IngredientView(MainView[IngredientService, IngredientForm]):
             "attr": "corrected_value",
         },
         {
-            "icon": "fas fa-weight-hanging",
-            "title": "Peso unitário (g)",
-            "attr": "weight_in_grams",
+            "icon": "fas fa-weight-scale",
+            "title": "Quantidade por unidade (g/ml)",
+            "attr": "quantity_in_grams_or_milliliters",
+        },
+        {
+            "icon": "fas fa-weight-scale",
+            "title": "Quantidade por unidade (kg/l)",
+            "attr": "quantity_in_kilograms_or_liters",
         },
         {
             "icon": "fas fa-circle-chevron-down",
-            "title": "Quantidade mínima",
+            "title": "Quantidade mínima em estoque",
             "attr": "minimum_quantity",
         },
         _INDEX_COLUMNS[4],

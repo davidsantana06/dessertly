@@ -21,9 +21,9 @@ class RecipeIngredientView(BridgeView[RecipeIngredientService, RecipeIngredientF
             "attr": "ingredient.name",
         },
         {
-            "icon": "fas fa-scale-balanced",
-            "title": "Peso (g)",
-            "attr": "weight_in_grams",
+            "icon": "fas fa-weight-scale",
+            "title": "Quantidade (g/ml)",
+            "attr": "quantity_in_grams_or_milliliters",
         },
     ]
     _SHOW_COLUMNS = _INDEX_COLUMNS
