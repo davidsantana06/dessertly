@@ -1,5 +1,7 @@
 from .base import BridgeModel, BM, MainModel, MM, Model, M
 
+from .mixin import StockMixin
+
 from .category import Category
 from .customer import Customer
 from .employee import Employee

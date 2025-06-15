@@ -12,4 +12,5 @@ from .recipe_material_view import RecipeMaterialView
 from .recipe_view import RecipeView
 from .sale_product_view import SaleProductView
 from .sale_view import SaleView
+from .shopping_list_view import ShoppingListView
 from .user_view import UserView

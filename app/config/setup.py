@@ -21,6 +21,7 @@ from app.view import (
     RecipeView,
     SaleProductView,
     SaleView,
+    ShoppingListView,
     UserView,
 )
 
@@ -63,6 +64,7 @@ class Setup:
         ProductView.register(app)
         SaleProductView.register(app)
         SaleView.register(app)
+        ShoppingListView.register(app)
         UserView.register(app)
 
     @staticmethod

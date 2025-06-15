@@ -13,4 +13,5 @@ from .recipe_material_service import RecipeMaterialService
 from .recipe_service import RecipeService
 from .sale_product_service import SaleProductService
 from .sale_service import SaleService
+from .shopping_list_service import ShoppingListService
 from .user_service import UserService

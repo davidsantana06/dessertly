@@ -26,3 +26,13 @@ class StockMixin:
     @declared_attr
     def current_quantity(cls):
         return Column(Float, nullable=False)
+
+    @property
+    def is_missing(self) -> bool:
+        return self.current_quantity < self.minimum_quantity
+
+    @property
+    def quantity_to_restock(self) -> int:
+        if not self.is_missing:
+            return 0
+        return self.minimum_quantity - self.current_quantity
